@@ -1,0 +1,60 @@
+SELECT * FROM loan_24012011123; # 1
+
+SELECT loan_no,amount FROM installment_24012011123; # 2
+
+SELECT Name,City FROM account_24012011123 WHERE Balance > 80000; # 3
+
+SELECT * FROM loan_24012011123 WHERE interest_rate > 7; # 4
+
+DESCRIBE loan_24012011123;
+DESCRIBE account_24012011123;
+DESCRIBE installment_24012011123;  #5
+
+UPDATE account_24012011123 SET Name = 'Patel Hiren' WHERE Name='Patel Jigar';
+SELECT * FROM account_24012011123; # 6
+
+UPDATE account_24012011123 SET Name = 'Kothari Nehal',City='Kherva' WHERE acc_no = 'A005';
+select * FROM account_24012011123; # 7
+
+SELECT * FROM account_24012011123 WHERE loan_taken = 'YES'; # 8
+
+ALTER TABLE account_24012011123 ADD address VARCHAR(20); # 9
+DESCRIBE account_24012011123; 
+
+ALTER TABLE loan_24012011123 ADD credit_no VARCHAR(4);
+DESCRIBE loan_24012011123; # 10
+
+CREATE TABLE ACCOUNT_TEMP AS SELECT acc_no,Name,Balance FROM account_24012011123; # 11
+SELECT * FROM ACCOUNT_TEMP;
+
+CREATE TABLE LOAN_TEMP AS SELECT loan_no,acc_no,loan_amt,loan_date FROM loan_24012011123; # 12
+SELECT * FROM LOAN_TEMP;
+
+CREATE TABLE TRANS_TEMP AS SELECT acc_no AS account_no,Name,Balance FROM account_24012011123; # 13
+SELECT * FROM TRANS_TEMP;
+
+ALTER TABLE loan_24012011123 MODIFY acc_no VARCHAR(7); # 14
+DESCRIBE loan_24012011123; 
+
+DELETE FROM account_24012011123 WHERE acc_no = 'A004'; # 15
+SELECT * FROM account_24012011123;
+
+UPDATE loan_24012011131 SET interest_rate = interest_rate + 2; # 16
+SELECT * FROM loan_24012011131;
+
+SELECT * FROM loan_24012011123 WHERE MONTH(loan_date) = 1; # 17
+
+UPDATE installment_24012011123 SET inst_date = '2022-03-03' WHERE inst_date = '2004-02-02'; # 18
+SELECT * FROM installment_24012011123; 
+
+SELECT loan_no, loan_amt * 2 AS double_amt FROM loan_24012011123; # 19
+
+UPDATE loan_24012011123 SET loan_amt = '150000' WHERE loan_no ='L001'; # 20
+SELECT * FROM loan_24012011123; 
+
+SELECT loan_no,amount,inst_date FROM installment_24012011123 ORDER BY inst_date; # 21
+
+SELECT * FROM account_24012011123 ORDER BY acc_no DESC; # 22
+
+DROP TABLE loan_temp;
+SHOW TABLES; #23
